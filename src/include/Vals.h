@@ -6,10 +6,10 @@
 #include <vector>
 
 namespace sict{
-  // a class to parse and hold delimeter seperated values
+  // a class to parse and hold delimeter separated values
   // a delimeter can not be a white space character
-  class Vals :public std::string{
-    std::string _nothing;
+  class Vals :public std::string{ //why inheritance?
+    // std::string _nothing; //wtf is this?
     char _delim;
     std::vector<std::string> _values;
     void set();

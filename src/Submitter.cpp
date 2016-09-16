@@ -4,10 +4,10 @@
 #include <cstdlib>
 #include <cstdio>
 #include <cstring>
-#include "Vals.h"
-#include "SubVals.h"
-#include "Command.h"
-#include "Submitter.h"
+#include "include/Vals.h"
+#include "include/SubVals.h"
+#include "include/Command.h"
+#include "include/Submitter.h"
 using namespace std;
 namespace sict{
   Submitter::Submitter(int argc, char** argv) :_cls("clear"){

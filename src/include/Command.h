@@ -4,7 +4,7 @@
 #include <string>
 namespace sict{
 
-  class Command :public std::string{
+  class Command :public std::string{ //a command is a string?? | composition over inheritance though
   public:
     Command(std::string str);
     int run()const;

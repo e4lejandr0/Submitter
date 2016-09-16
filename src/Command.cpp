@@ -3,7 +3,7 @@
 #   include <iostream>
 # endif
 #include <cstdlib>
-#include "Command.h"
+#include "include/Command.h"
 
 using namespace std;
 namespace sict{

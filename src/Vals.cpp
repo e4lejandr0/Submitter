@@ -1,8 +1,8 @@
 #include <cctype>
-#include "Vals.h"
+#include "include/Vals.h"
 using namespace std;
 namespace sict{
-  string Vals::trim(string s){
+  string Vals::trim(string s){ //this is static
     size_t cur = 0;                    
     while (s.length() != 0 && isspace(s.at(cur))){
       s.erase(cur, 1);
@@ -18,7 +18,7 @@ namespace sict{
     _delim = delim;
   }
   void Vals::set(const char* str, char delim){
-    assign(str);
+    assign(str); //*this
     if (delim) _delim = delim;
     set();
   }
@@ -27,10 +27,10 @@ namespace sict{
     set();
   }
   void Vals::clear(){
-    string::clear();
+    string::clear(); // clears some internal string buffer?
     _values.clear();
   }
-  void Vals::set(){
+  void Vals::set(){ // parses _delim separated values and puts them into the _values array
     size_t first = find_first_of(_delim);
     size_t last = find_last_of(_delim);
     _values.clear();
@@ -51,7 +51,7 @@ namespace sict{
       }
     }
     else if (length() > 0){
-      _values.push_back(trim(*this));
+      _values.push_back(Vals::trim(*this)); //typeof(*this) == Vals; Vals::trim(string)???
     }
   }
   Vals::Vals(std::string csv, char delim) : std::string(csv){
@@ -61,18 +61,18 @@ namespace sict{
   int Vals::size(){
     return _values.size();
   }
-  string& Vals::operator[](int index){
-    string* val = &_nothing;
-    if (size() > 0) val = &_values[index%size()];
-    return *val;
+  string& Vals::operator[](int index){ //throw an exception when index > size()? 
+    string val;
+    if (size() > 0) val = _values[index%size()]; //weak bound checking?
+    return val;
   }
   std::ifstream& operator>>(std::ifstream& ifstr, Vals& V){
-    char line[2048] = "";
-    ifstr.getline(line, 2048, '\n');
+    string line;
+    getline(ifstr, line);
     V.clear();
     // not failed and not a comment
     if (!ifstr.fail() && !(line[0] == '-' && line[1] == '-')){
-      V.set(line);
+      V.set(line.c_str());
     }
     return ifstr;
   }

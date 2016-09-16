@@ -1,5 +1,5 @@
-#include "Vals.h"
-#include "SubVals.h"
+#include "include/Vals.h"
+#include "include/SubVals.h"
 using namespace std;
 namespace sict{
   SubVal::SubVal(std::string& key, Vals& value){
@@ -21,7 +21,7 @@ namespace sict{
     return ret;
   }
   Vals& SubVals::operator[](const char* key){
-    Vals* sv = &_nothing;
+    Vals* sv = &_nothing; //???
     unsigned i = 0;
     for (i = 0; i < _vals.size() && sv->size() == 0; i++){
       if (_vals[i]._key == key){
