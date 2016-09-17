@@ -51,20 +51,20 @@ namespace sict{
       }
     }
     else if (length() > 0){
-      _values.push_back(Vals::trim(*this)); //typeof(*this) == Vals; Vals::trim(string)???
+      _values.push_back(Vals::trim(*this)); //typeof(*this) == Vals; Vals::trim(string) -> inheritance
     }
   }
-  Vals::Vals(std::string csv, char delim) : std::string(csv){
+  Vals::Vals(const std::string& csv, char delim) : std::string(csv){
     _delim = delim;
     set();
   }
   int Vals::size(){
     return _values.size();
   }
-  string& Vals::operator[](int index){ //throw an exception when index > size()? 
-    string val;
-    if (size() > 0) val = _values[index%size()]; //weak bound checking?
-    return val;
+  string Vals::operator[](int index){ //throw an exception when index > size()? 
+    // string val;
+    // if (size() > 0) val = _values[index%size()]; //weak bound checking?
+    return (size() > 0)?_values[index%size()]:"";
   }
   std::ifstream& operator>>(std::ifstream& ifstr, Vals& V){
     string line;

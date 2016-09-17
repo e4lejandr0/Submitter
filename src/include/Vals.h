@@ -8,7 +8,7 @@
 namespace sict{
   // a class to parse and hold delimeter separated values
   // a delimeter can not be a white space character
-  class Vals :public std::string{ //why inheritance?
+  class Vals :public std::string{ //nono, don't inherit from std::string
     // std::string _nothing; //wtf is this?
     char _delim;
     std::vector<std::string> _values;
@@ -19,8 +19,8 @@ namespace sict{
     void set(char delim );
     int size();
     Vals(char delimeter = ',');
-    Vals(std::string csv, char delimeter);
-    std::string& operator[](int index);
+    Vals(const std::string& csv, char delimeter);
+    std::string operator[](int index);
     void clear();
   };
   std::ifstream& operator>>(std::ifstream& ifstr, Vals& V);

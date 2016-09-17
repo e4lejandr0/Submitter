@@ -25,3 +25,7 @@ ipch/
 *.lai
 *.la
 *.a
+
+#build dir
+build
+

@@ -1,5 +1,4 @@
-CXX=g++
-CXX_FLAGS=-Wall -std=c++0x
+CXX_FLAGS=-Wall -std=c++11
 BUILD_DIR=build
 OBJ_DIR=build/obj
 SRC_DIR=src
@@ -22,3 +21,4 @@ clean:
 cleanobj:
 	@echo 'Removing object files...'
 	@rm -rf $(OBJ_DIR)
+

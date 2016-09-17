@@ -44,7 +44,7 @@ namespace sict{
     int checkOutput();
     bool compareOutputs(int from, int to); 
     const char* name();
-    bool submit(std::string& toEmail);
+    bool submit(const std::string& toEmail);
     bool removeBS();
   public:
     Submitter(int argc, char** argv);

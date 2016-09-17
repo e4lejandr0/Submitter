@@ -452,7 +452,7 @@ namespace sict{
     }
     return bad;
   }
-  bool Submitter::submit(string& toEmail){
+  bool Submitter::submit(const string& toEmail){
     Command email("echo \"");
     email += name();
     email += " submission by `whoami`. Executed from ";
